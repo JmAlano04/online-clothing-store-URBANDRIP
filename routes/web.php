@@ -36,6 +36,11 @@ Route::get('/', function () {
      Route::get('/gallery', function () {
         return Inertia::render('gallery');
     })->name('gallery');
+
+     {/*Cart Route*/}
+     Route::get('cart', function () {
+        return Inertia::render('cart');
+    })->name('cart');
     
 
 Route::middleware(['auth','role:admin'])->group(function () {
@@ -48,6 +53,8 @@ Route::middleware(['auth','role:user'])->group(function () {
     Route::get('user-dashboard', function () {
         return Inertia::render('user-dashboard');
     })->name('user-dashboard');
+
+   
 });
 
 require __DIR__.'/settings.php';

@@ -2,6 +2,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { type SharedData } from '@/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { ShoppingCart } from 'lucide-react';
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
     const { auth } = usePage<SharedData>().props;
@@ -41,27 +42,38 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                 </nav>
 
                 {/* AUTH */}
-                {auth.user ? (
-                    <Link href={auth.user.role === 'admin'
-                    ? route('dashboard')
-                    : route('user-dashboard')
-                } className="flex items-center justify-center w-10 h-10 border border-black hover:bg-black hover:text-white transition">
-                         <FontAwesomeIcon icon={faUser} />
+                <div className="flex items-center gap-4">
+                  
+                    {auth.user ? (
+                        <Link href={auth.user.role === 'admin'
+                        ? route('dashboard')
+                        : route('user-dashboard')
+                    } className="flex items-center justify-center w-10 h-10 border border-black hover:bg-black hover:text-white transition">
+                             <FontAwesomeIcon icon={faUser} />
+                        </Link>
+                    ) : (
+                       <Link 
+                            href={route('login')} 
+                            className="flex items-center justify-center w-10 h-10 border border-black  hover:bg-black hover:text-white transition"
+                        >
+                            <FontAwesomeIcon icon={faUser} />
+                        </Link>
+                    )}
+
+                     <Link  href={route('cart')}  className="flex items-center justify-center w-10 h-10 border border-black hover:bg-black hover:text-white transition">
+                        <ShoppingCart size={20} />
                     </Link>
-                ) : (
-                   <Link 
-                        href={route('login')} 
-                        className="flex items-center justify-center w-10 h-10 border border-black  hover:bg-black hover:text-white transition"
-                    >
-                        <FontAwesomeIcon icon={faUser} />
-                    </Link>
-                )}
+                </div>
             </header>
 
             {/* PAGE CONTENT */}
             <main className="p-6">
                 {children}
             </main>
+
+            <footer className="text-center text-sm text-muted-foreground py-4">
+                &copy; {new Date().getFullYear()} UrbanDrip. All rights reserved.
+            </footer>
         </div>
     );
 }
