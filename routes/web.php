@@ -41,7 +41,7 @@ Route::get('/', function () {
      Route::get('cart', function () {
         return Inertia::render('cart');
     })->name('cart');
-    
+
 
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('dashboard', function () {
