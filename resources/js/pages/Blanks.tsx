@@ -1,14 +1,19 @@
 import HomeLayout from "@/layouts/homeLayout";
+
 import { Head } from '@inertiajs/react';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
 function Blanks() {
     return(
+        
         <HomeLayout>
-        {/* Blanks */}
-        <Head title="Blanks" />
-        <div className="mt-10 text-center">
-            <h1>Blanks</h1>
-            <p>Here are our top picks for you!</p>
-        </div>
+            {/* Top Picks */}
+            <Head title="Top Blanks" />
+                <div className="mt-10 text-center">
+                    <h1>Top Blanks</h1>
+                    <p>Here are our top blanks for you!</p>
+                </div>
         </HomeLayout>
     )
 }

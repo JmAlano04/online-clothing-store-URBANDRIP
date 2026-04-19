@@ -9,7 +9,7 @@ function UserDashboard() {
         
         <HomeLayout>
             {/* User Dashboard */}
-            <Head title="User Dashboard" />
+            <Head title="Dashboard" />
                 <div className="mt-10 text-center">
                     <h1>User Dashboard</h1>
                     <p>Welcome to your dashboard!</p>
@@ -17,8 +17,6 @@ function UserDashboard() {
                         Logout
                     </Button>
                 </div>
-
-              
         </HomeLayout>
     )
 }

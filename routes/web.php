@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -10,11 +11,17 @@ Route::get('/', function () {
 
 
     Route::get('/top-picks', function () {
-        return Inertia::render('TopPicks');
+        $products = Product::all();
+        return Inertia::render('TopPicks', [
+            'products' => $products,
+        ]);
     })->name('top-picks');
 
     Route::get('/blanks', function () {
-        return Inertia::render('Blanks');
+        $products = Product::where('categories', 'Blanks')->get();
+        return Inertia::render('Blanks', [
+            'products' => $products,
+        ]);
     })->name('blanks');
 
     Route::get('/new-arrivals', function () {
@@ -36,7 +43,12 @@ Route::get('/', function () {
      Route::get('/gallery', function () {
         return Inertia::render('gallery');
     })->name('gallery');
-    
+
+     {/*Cart Route*/}
+     Route::get('cart', function () {
+        return Inertia::render('cart');
+    })->name('cart');
+
 
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('dashboard', function () {
@@ -48,6 +60,8 @@ Route::middleware(['auth','role:user'])->group(function () {
     Route::get('user-dashboard', function () {
         return Inertia::render('user-dashboard');
     })->name('user-dashboard');
+
+   
 });
 
 require __DIR__.'/settings.php';
