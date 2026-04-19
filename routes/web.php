@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -10,11 +11,17 @@ Route::get('/', function () {
 
 
     Route::get('/top-picks', function () {
-        return Inertia::render('TopPicks');
+        $products = Product::all();
+        return Inertia::render('TopPicks', [
+            'products' => $products,
+        ]);
     })->name('top-picks');
 
     Route::get('/blanks', function () {
-        return Inertia::render('Blanks');
+        $products = Product::where('categories', 'Blanks')->get();
+        return Inertia::render('Blanks', [
+            'products' => $products,
+        ]);
     })->name('blanks');
 
     Route::get('/new-arrivals', function () {
