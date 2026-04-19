@@ -1,14 +1,19 @@
 import HomeLayout from "@/layouts/homeLayout";
+import HeaderHomepage from "@/components/header-title-page";
+import ProductCard from "@/components/product-card";
 import { Head } from '@inertiajs/react';
-function Bottoms() {
+
+
+function Bottoms({ products }: { products: any[] }) {
     return(
         <HomeLayout>
-            {/* Bottoms */}
             <Head title="Bottoms" />
-            <div className="mt-10 text-center">
-                <h1>Bottoms</h1>
-                <p>Here are our latest arrivals for you!</p>
-            </div>
+
+            {/* Header */}
+            <HeaderHomepage pageTitle="BOTTOMs" />
+
+            {/* Products */}
+            <ProductCard products={products} />
         </HomeLayout>
     )
 }
