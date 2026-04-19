@@ -8,10 +8,10 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
     const { auth } = usePage<SharedData>().props;
 
     return (
-        <div className="min-h-screen pr-10 pl-10 pt-4 bg-[#F0F0F0]">
+        <div className="min-h-screen  pt-4  bg-[#F0F0F0]">
 
             {/* NAVBAR */}
-            <header className="flex justify-between items-center px-6 py-4">
+            <header className="flex justify-between items-center px-20 py-4">
                 
                 <Link href="/">
                     <img src="/images/UrbanDrip_logo.png" width="150" />
@@ -42,7 +42,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                 </nav>
 
                 {/* AUTH */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center  gap-4">
                   
                     {auth.user ? (
                         <Link href={auth.user.role === 'admin'
@@ -67,7 +67,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             </header>
 
             {/* PAGE CONTENT */}
-            <main className="p-6">
+            <main className="">
                 {children}
             </main>
 
