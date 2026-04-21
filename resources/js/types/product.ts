@@ -4,10 +4,6 @@ export interface Product {
     description: string;
     price: number;
     categories: string;
-    image_url?: string;
+    image: string;
 }
 
-/* 🔹 Props */
-interface ProductProps {
-    products: Product[];
-}

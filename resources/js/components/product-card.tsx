@@ -12,25 +12,27 @@ function ProductCard({ products }: ProductProps) {
             {products.length > 0 ? (
                 products.map((product) => (
                     <Card key={product.id} className="hover:shadow-lg pt-3 transition">
-                        <CardHeader>
-                            <CardTitle className="text-center">
-                                {product.name}
-                            </CardTitle>
-                        </CardHeader>
+                        
 
                         <CardContent>
-                            {product.image_url ? (
+                            {product.image ? (
                                 <img
-                                    src={product.image_url}
+                                    src={product.image}
                                     alt={product.name}
-                                    className="w-full h-48 object-cover rounded-lg"
+                                    className="w-full h-48 object-cover "
                                 />
                             ) : (
-                                <div className="w-full h-48 bg-gray-200 flex items-center justify-center rounded-lg">
+                                <div className="w-full h-48 bg-gray-200 flex items-center justify-center ">
                                     No Image
                                 </div>
                             )}
                         </CardContent>
+
+                        <CardHeader>
+                            <CardTitle className="text-center font-sans text-sm`">
+                                {product.name}
+                            </CardTitle>
+                        </CardHeader>
 
                         <CardFooter className="flex justify-center font-sans items-center text-center">
                             <span className="font-bold text-lg">

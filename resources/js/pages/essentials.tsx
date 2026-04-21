@@ -4,13 +4,13 @@ import ProductCard from "@/components/product-card";
 import { Head } from '@inertiajs/react';
 
 
-function Outerwear({ products }: { products: any[] }) {
+function Essentials({ products }: { products: any[] }) {
     return(
         <HomeLayout>
-            <Head title="Outerwear" />
+            <Head title="Essentials" />
 
             {/* Header */}
-            <HeaderHomepage pageTitle="OUTERWEAR" />
+            <HeaderHomepage pageTitle="ESSENTIALS" />
 
             {/* Products */}
             <ProductCard products={products} />
@@ -18,4 +18,4 @@ function Outerwear({ products }: { products: any[] }) {
     )
 }
 
-export default Outerwear;
+export default Essentials;
