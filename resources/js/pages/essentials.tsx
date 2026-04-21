@@ -1,17 +1,21 @@
 import HomeLayout from "@/layouts/homeLayout";
+import HeaderHomepage from "@/components/header-title-page";
+import ProductCard from "@/components/product-card";
 import { Head } from '@inertiajs/react';
 
-function essentials() {
+
+function Essentials({ products }: { products: any[] }) {
     return(
         <HomeLayout>
-        {/* Essentials */}
-        <Head title="Essentials" />
-        <div className="mt-10 text-center">
-            <h1>Essentials</h1>
-            <p>Here are our latest essentials for you!</p>
-        </div>
+            <Head title="Essentials" />
+
+            {/* Header */}
+            <HeaderHomepage pageTitle="ESSENTIALS" />
+
+            {/* Products */}
+            <ProductCard products={products} />
         </HomeLayout>
     )
 }
 
-export default essentials;
+export default Essentials;

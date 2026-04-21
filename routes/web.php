@@ -29,15 +29,24 @@ Route::get('/', function () {
     })->name('new-arrivals');
 
     Route::get('/bottoms', function () {
-        return Inertia::render('Bottoms');
+        $products = Product::where('categories', 'Bottoms')->get();
+        return Inertia::render('Bottoms', [
+            'products' => $products,
+            ]);
     })->name('bottoms');
 
     Route::get('/outerwear', function () {
-        return Inertia::render('Outerwear');
+        $products = Product::where('categories', 'Outerwear')->get();
+        return Inertia::render('Outerwear', [
+            'products' => $products,
+        ]);
     })->name('outerwear');
 
      Route::get('/essentials', function () {
-        return Inertia::render('essentials');
+        $products = Product::where('categories', 'Essentials')->get();
+        return Inertia::render('essentials', [
+            'products' => $products,
+        ]);
     })->name('essentials');
 
      Route::get('/gallery', function () {
