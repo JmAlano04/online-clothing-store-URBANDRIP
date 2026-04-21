@@ -9,7 +9,7 @@ Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
-
+{/*Product Routes Landing Page*/}
     Route::get('/top-picks', function () {
         $products = Product::all();
         return Inertia::render('TopPicks', [
@@ -59,18 +59,18 @@ Route::get('/', function () {
     })->name('cart');
 
 
+{/*Admin Routes*/}
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
 
+{/*User Routes*/}
 Route::middleware(['auth','role:user'])->group(function () {
     Route::get('user-dashboard', function () {
         return Inertia::render('user-dashboard');
     })->name('user-dashboard');
-
-   
 });
 
 require __DIR__.'/settings.php';

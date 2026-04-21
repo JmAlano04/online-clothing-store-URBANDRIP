@@ -10,7 +10,7 @@ function Bottoms({ products }: { products: any[] }) {
             <Head title="Bottoms" />
 
             {/* Header */}
-            <HeaderHomepage pageTitle="BOTTOMs" />
+            <HeaderHomepage pageTitle="BOTTOMS" />
 
             {/* Products */}
             <ProductCard products={products} />
