@@ -11,7 +11,7 @@ function ProductCard({ products }: ProductProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 m-20 gap-6 mt-10 px-10">
             {products.length > 0 ? (
                 products.map((product) => (
-                    <Card key={product.id} className="hover:shadow-lg pt-3 transition">
+                    <Card key={product.id} className=" hover:bg-gray-100 bg-transparent cursor-pointer  pt-3 transition">
                         
 
                         <CardContent>
@@ -29,13 +29,13 @@ function ProductCard({ products }: ProductProps) {
                         </CardContent>
 
                         <CardHeader>
-                            <CardTitle className="text-center font-sans text-sm`">
+                            <CardTitle className="text-center font-sans text-sm lg:text-xs">
                                 {product.name}
                             </CardTitle>
                         </CardHeader>
 
                         <CardFooter className="flex justify-center font-sans items-center text-center">
-                            <span className="font-bold text-lg">
+                            <span className="font-bold text-sm lg:text-xs">
                                 ₱{product.price}
                             </span>
                         </CardFooter>

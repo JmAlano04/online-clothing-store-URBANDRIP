@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/react';
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/product-card";
 import { Product } from "@/types/product";
+import HeaderHomepage from "@/components/header-title-page";
 
 
 /* 🔹 Props */
@@ -16,10 +17,7 @@ function Blanks({ products }: BlanksProps) {
             <Head title="Blanks" />
 
             {/* Header */}
-            <div className="mt-10 text-center bg-white w-full pt-5 pb-5">
-                <h1 className="text-5xl text-gray-800 font-syncopate font-bold">URBANDRIP - BLANKS</h1>
-                <p className="text-gray-500 mt-6 text-xl">Here are our blanks for you!</p>
-            </div>
+            <HeaderHomepage pageTitle="BLANKS" />
 
             {/* Products */}
             <ProductCard products={products} />

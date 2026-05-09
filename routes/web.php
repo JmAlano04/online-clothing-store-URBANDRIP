@@ -62,8 +62,25 @@ Route::get('/', function () {
 {/*Admin Routes*/}
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+        return Inertia::render('admin/dashboard');
     })->name('dashboard');
+    Route::get('products', function () {
+            return Inertia::render('admin/products');
+    })->name('products');
+    
+        Route::get('users', function () {
+            return Inertia::render('admin/users');
+        })->name('users');
+    
+        Route::get('orders', function () {
+            return Inertia::render('admin/orders');
+        })->name('orders');
+
+        Route::get('transactions', function () {
+            return Inertia::render('admin/transaction');
+        })->name('transactions');
+
+   
 });
 
 {/*User Routes*/}

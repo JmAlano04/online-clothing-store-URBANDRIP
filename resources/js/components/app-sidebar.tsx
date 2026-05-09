@@ -4,28 +4,59 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { ArrowLeftRight, BookOpen, Folder, LayoutGrid, ListOrdered, PackageOpen, User } from 'lucide-react';
 import AppLogo from './app-logo';
+
+
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        url: '/dashboard',
+        title: 'Overview',
+        url: '/dashboard', 
         icon: LayoutGrid,
+    },
+     {
+        title: 'Orders',
+        url: '/orders', 
+        icon: ListOrdered,
+    },
+     {
+        title: 'Transactions',
+        url: '/transactions', 
+        icon: ArrowLeftRight,
+    },
+ 
+     {
+        title: 'Users',
+        url: '/users', 
+        icon: User,
+    },
+    
+    
+    
+    
+];
+
+
+const mainNavItems2: NavItem[] = [
+       {
+        title: 'Products',
+        url: '/products', 
+        icon: PackageOpen,
     },
 ];
 
 const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        url: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        url: 'https://laravel.com/docs/starter-kits',
-        icon: BookOpen,
-    },
+    // {
+    //     title: 'Repository',
+    //     url: 'https://github.com/laravel/react-starter-kit',
+    //     icon: Folder,
+    // },
+    // {
+    //     title: 'Documentation',
+    //     url: 'https://laravel.com/docs/starter-kits',
+    //     icon: BookOpen,
+    // },
 ];
 
 export function AppSidebar() {
@@ -34,21 +65,20 @@ export function AppSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
                             <Link href="/dashboard" prefetch>
                                 <AppLogo />
                             </Link>
-                        </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
-
+            {/* Menu Navigation */}
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain items={mainNavItems} label="MENU" />
+                <NavMain items={mainNavItems2} label="INVENTORY" />
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+                <NavFooter items={footerNavItems}  className="mt-auto " />
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
