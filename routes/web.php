@@ -76,6 +76,10 @@ Route::middleware(['auth','role:admin'])->group(function () {
             return Inertia::render('admin/orders');
         })->name('orders');
 
+        Route::get('transactions', function () {
+            return Inertia::render('admin/transaction');
+        })->name('transactions');
+
    
 });
 
