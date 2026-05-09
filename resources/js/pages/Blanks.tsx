@@ -17,9 +17,6 @@ function Blanks({ products }: BlanksProps) {
             <Head title="Blanks" />
 
             {/* Header */}
-
-
-            {/* Header */}
             <HeaderHomepage pageTitle="BLANKS" />
 
             {/* Products */}

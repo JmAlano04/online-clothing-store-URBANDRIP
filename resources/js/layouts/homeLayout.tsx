@@ -55,7 +55,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                 <div className="hidden lg:flex items-center gap-4">
                     {auth.user ? (
                         <Link href={auth.user.role === 'admin'
-                        ? route('dashboard')
+                        ? route('admin.dashboard')
                         : route('user-dashboard')
                     } className="flex items-center justify-center w-10 h-10 border border-black hover:bg-black hover:text-white transition">
                              <FontAwesomeIcon icon={faUser} />
