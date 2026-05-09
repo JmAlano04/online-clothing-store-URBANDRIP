@@ -44,6 +44,13 @@ const mainNavItems2: NavItem[] = [
         url: '/products', 
         icon: PackageOpen,
     },
+    {
+        title: 'Categories',
+        url: '/categories', 
+        icon: Folder,
+    }
+
+     
 ];
 
 const footerNavItems: NavItem[] = [

@@ -80,6 +80,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
             return Inertia::render('admin/transaction');
         })->name('transactions');
 
+       Route::get('categories', function () {
+            return Inertia::render('admin/categories');
+        })->name('categories');
    
 });
 
