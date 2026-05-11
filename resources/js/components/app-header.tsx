@@ -19,7 +19,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         url: '/dashboard',
-        icon: LayoutGrid,
+        
     },
 ];
 

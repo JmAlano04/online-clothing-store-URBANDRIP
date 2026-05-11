@@ -86,6 +86,10 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('promos', function () {
             return Inertia::render('admin/promo');
         })->name('promos');
+
+        Route::get('sales-analytics', function () {
+            return Inertia::render('admin/salesAnalytics');
+        })->name('sales-analytics');
    
 });
 

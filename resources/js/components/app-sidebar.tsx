@@ -57,7 +57,7 @@ const mainNavItems2: NavItem[] = [
 const mainNavItems3: NavItem[] = [
        {
         title: 'Sales Analytics',
-        url: '/analytics', 
+        url: '/sales-analytics', 
         icon: ChartColumnBig,
     },
   
