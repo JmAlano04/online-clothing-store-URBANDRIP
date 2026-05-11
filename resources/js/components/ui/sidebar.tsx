@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import { VariantProps, cva } from 'class-variance-authority';
-import { PanelLeft } from 'lucide-react';
+import { ArrowLeftRight, LayoutGrid, ListOrdered, PanelLeft, User, PackageOpen, Folder, Gem, ChartColumnBig } from 'lucide-react';
 import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
+import { NavItem } from '@/types';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -225,9 +226,38 @@ const Sidebar = React.forwardRef<
 });
 Sidebar.displayName = 'Sidebar';
 
+
+
+
 const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.ComponentProps<typeof Button>>(
     ({ className, onClick, ...props }, ref) => {
         const { toggleSidebar } = useSidebar();
+
+        const getIcon = () => {
+            const path = window.location.pathname;
+            switch (path) {
+                case '/dashboard':
+                    return LayoutGrid;
+                case '/orders':
+                    return ListOrdered;
+                case '/transactions':
+                    return ArrowLeftRight;
+                case '/users':
+                    return User;
+                case '/products':
+                    return PackageOpen;
+                case '/categories':
+                    return Folder;
+                case '/promos':
+                    return Gem;
+                case '/sales-analytics':
+                    return ChartColumnBig;
+                default:
+                    return ListOrdered;
+            }
+        };
+
+        const Icon = getIcon();
 
         return (
             <Button
@@ -241,8 +271,12 @@ const SidebarTrigger = React.forwardRef<React.ElementRef<typeof Button>, React.C
                     toggleSidebar();
                 }}
                 {...props}
-            >
-                <PanelLeft />
+            >   
+
+
+                
+                <Icon />
+                
                 <span className="sr-only">Toggle Sidebar</span>
             </Button>
         );

@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { ArrowLeftRight, BookOpen, Folder, LayoutGrid, ListOrdered, PackageOpen, User } from 'lucide-react';
+import { ArrowLeftRight, BookOpen, Folder, LayoutGrid, ListOrdered, PackageOpen, User, Gem, MessageSquareWarning, ChartColumnBig } from 'lucide-react';
 import AppLogo from './app-logo';
 
 
@@ -36,22 +36,38 @@ const mainNavItems: NavItem[] = [
     
     
 ];
-
-
 const mainNavItems2: NavItem[] = [
        {
         title: 'Products',
         url: '/products', 
         icon: PackageOpen,
     },
+    {
+        title: 'Categories',
+        url: '/categories', 
+        icon: Folder,
+    },
+    {
+        title: 'Promos',
+        url: '/promos', 
+        icon: Gem,
+    }
 ];
 
+const mainNavItems3: NavItem[] = [
+       {
+        title: 'Sales Analytics',
+        url: '/sales-analytics', 
+        icon: ChartColumnBig,
+    },
+  
+];
 const footerNavItems: NavItem[] = [
-    // {
-    //     title: 'Repository',
-    //     url: 'https://github.com/laravel/react-starter-kit',
-    //     icon: Folder,
-    // },
+    {
+        title: 'Feedback',
+        url: 'https://github.com/JmAlano04/online-clothing-store-URBANDRIP',
+        icon: MessageSquareWarning,
+    },
     // {
     //     title: 'Documentation',
     //     url: 'https://laravel.com/docs/starter-kits',
@@ -75,6 +91,7 @@ export function AppSidebar() {
             <SidebarContent>
                 <NavMain items={mainNavItems} label="MENU" />
                 <NavMain items={mainNavItems2} label="INVENTORY" />
+                <NavMain items={mainNavItems3} label="ANALYTICS" />
             </SidebarContent>
 
             <SidebarFooter>
