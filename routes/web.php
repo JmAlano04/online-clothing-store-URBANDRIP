@@ -3,7 +3,8 @@
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\RoleMiddleware;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -68,9 +69,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
             return Inertia::render('admin/products');
     })->name('products');
     
-        Route::get('users', function () {
-            return Inertia::render('admin/users');
-        })->name('users');
+    //USER CONTROLLER RESOURCE ROUTES
+    Route::resource('users', UserController::class);
+        
     
         Route::get('orders', function () {
             return Inertia::render('admin/orders');
