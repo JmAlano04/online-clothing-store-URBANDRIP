@@ -32,6 +32,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                     <img src="/images/UrbanDrip_logo.png" width="120" className="w-24 md:w-32 lg:w-40" />
                 </Link>
                 
+                
                 {/* Desktop Navigation */}
                 <nav className="hidden lg:flex gap-4 xl:gap-4 font-syncopate text-xs xl:text-sm ">
                     {navLinks.map((link) => (
@@ -74,6 +75,10 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                 </div>
             </header>
+
+            {/* <div>
+                <button>Seach</button>
+            </div> */}
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (

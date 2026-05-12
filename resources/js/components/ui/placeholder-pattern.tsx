@@ -16,5 +16,7 @@ export function PlaceholderPattern({ className }: PlaceholderPatternProps) {
             </defs>
             <rect stroke="none" fill={`url(#${patternId})`} width="100%" height="100%"></rect>
         </svg>
+
+    
     );
 }
