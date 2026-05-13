@@ -1,10 +1,10 @@
 import React from 'react';
 import Table from '@/components/table';
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
+import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
-
+import { Plus } from 'lucide-react';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Users',
@@ -58,7 +58,14 @@ export default function Users({ users }: UsersPageProps) {
             <Head title="Users" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <div className="border-sidebar-border/70  dark:border-sidebar-border relative min-h-[100vh] flex-1 rounded-xl border md:min-h-min">
-                      <h1 className="text-medium font-bold p-3">Users Management</h1>
+                    <div className='flex justify-between items-center p-3'>
+                        <h1 className="text-medium font-bold">Users Management</h1>
+
+                        <Button size="sm" type="button">
+                            <Plus /> New
+                        </Button>
+                    </div>
+                      
                       <Table data={users} columns={columns} rowKey="id" />
                 </div>
             </div>
