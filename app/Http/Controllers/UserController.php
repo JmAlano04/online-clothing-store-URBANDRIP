@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,12 +15,10 @@ class UserController extends Controller
     public function index()
     {
         //
-        $user = User::all();
+        $users = User::all();
         return Inertia::render('admin/users', [
-            'users' => $user,
-            compact('user')
+            'users' => $users,
         ]);
-        
     }
 
     /**
@@ -28,6 +27,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -36,6 +36,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'role' => 'required|string|in:admin,user',
+        ]); 
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+        ]);
+
+        return redirect()->back()->with('success', 'User created successfully.');
+
     }
 
     /**

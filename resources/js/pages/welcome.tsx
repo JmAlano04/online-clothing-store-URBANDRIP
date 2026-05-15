@@ -11,6 +11,6 @@ export default function Welcome() {
                         
             </div>
 
-        </HomeLayout>
+        </HomeLayout>   
     );
 }
