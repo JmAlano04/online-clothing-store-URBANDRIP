@@ -70,7 +70,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     })->name('products');
     
     //USER CONTROLLER RESOURCE ROUTES
-    Route::resource('users', UserController::class);
+    Route::get('users', [UserController::class, 'index']);
+    Route::post('users', [UserController::class, 'store']);
         
     
         Route::get('orders', function () {
