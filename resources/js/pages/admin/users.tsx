@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Table from '@/components/table';
 import { Button } from '@/components/ui/button';
-import AddUserModal from '@/components/modals/add-user-modal';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
-import { Plus } from 'lucide-react';
+import { Plus, CheckCircle, XCircle } from 'lucide-react';
 import { User } from '@/types/users';
-import { CheckCircle } from 'lucide-react';
+import ReusableFormModal from '@/components/modals/reusable-form-modal';
 
 const breadcrumbs: BreadcrumbItem[] = [
-    {
-        title: 'Users',
-        href: '/users',
-    },
+    { title: 'Users', href: '/users' },
 ];
 
 interface UsersPageProps {
@@ -29,27 +25,15 @@ interface PageProps {
 }
 
 const columns = [
-    {
-        key: 'name',
-        label: 'Name',
-    },
-    {
-        key: 'email',
-        label: 'Email',
-    },
-    {
-        key: 'role',
-        label: 'Role',
-    },
+    { key: 'name', label: 'Name' },
+    { key: 'email', label: 'Email' },
+    { key: 'role', label: 'Role' },
     {
         key: 'created_at',
         label: 'Created date',
         render: (value: string) => new Date(value).toLocaleDateString(),
     },
-    {
-        key: 'status',
-        label: 'Status',
-    },
+    { key: 'status', label: 'Status' },
 ];
 
 export default function Users({ users }: UsersPageProps) {
@@ -58,11 +42,9 @@ export default function Users({ users }: UsersPageProps) {
 
     const { flash: pageFlash } = usePage<PageProps>().props;
 
-    // Sync Inertia flash into local state, then auto-dismiss after 4s
     useEffect(() => {
         if (pageFlash?.success || pageFlash?.error) {
             setFlash(pageFlash);
-
             const timer = setTimeout(() => setFlash({}), 4000);
             return () => clearTimeout(timer);
         }
@@ -73,36 +55,23 @@ export default function Users({ users }: UsersPageProps) {
             <Head title="Users" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
 
-                {/* FLASH MESSAGE */}
+                {/* ✅ FLASH MESSAGES */}
                 {flash.success && (
-                    <div className="flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-300">
-                        <CheckCircle className="h-4 w-4 shrink-0" />
+                    <div className="flex items-center gap-2 rounded-md bg-green-50 border border-green-200 p-4 text-green-700">
+                        <CheckCircle className="h-5 w-5 shrink-0" />
                         <span>{flash.success}</span>
-                        <button
-                            onClick={() => setFlash({})}
-                            className="ml-auto text-green-600 hover:text-green-900 dark:text-green-400"
-                        >
-                            ✕
-                        </button>
                     </div>
                 )}
-
                 {flash.error && (
-                    <div className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-950 dark:text-red-300">
-                        <span>⚠️</span>
+                    <div className="flex items-center gap-2 rounded-md bg-red-50 border border-red-200 p-4 text-red-700">
+                        <XCircle className="h-5 w-5 shrink-0" /> {/* ✅ fixed icon */}
                         <span>{flash.error}</span>
-                        <button
-                            onClick={() => setFlash({})}
-                            className="ml-auto text-red-600 hover:text-red-900 dark:text-red-400"
-                        >
-                            ✕
-                        </button>
                     </div>
                 )}
 
                 <div className="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[100vh] flex-1 rounded-xl border md:min-h-min">
 
-                    {/* USER TABLE HEADER */}
+                    {/* HEADER */}
                     <div className='flex justify-between items-center p-3'>
                         <h1 className="text-medium font-bold">Users Management</h1>
                         <Button onClick={() => setIsModalOpen(true)} size="sm" type="button">
@@ -110,14 +79,59 @@ export default function Users({ users }: UsersPageProps) {
                         </Button>
                     </div>
 
-                    {/* TABLE FOR USERS */}
+                    {/* TABLE */}
                     <Table data={users} columns={columns} rowKey="id" />
                 </div>
             </div>
 
             {/* ADD USER MODAL */}
-            <AddUserModal isOpen={isModalOpen} onOpenChange={setIsModalOpen} />
-
+            <ReusableFormModal
+                isOpen={isModalOpen}
+                onOpenChange={setIsModalOpen}
+                title="Add User"
+                description="Fill in the details to add a new user."
+                endpoint="/users"
+                method="post"
+                fields={[
+                    {
+                        name: 'name',
+                        label: 'Name',
+                        type: 'text',
+                        placeholder: 'Enter user name',
+                        required: true,
+                    },
+                    {
+                        name: 'email',
+                        label: 'Email',
+                        type: 'email',
+                        placeholder: 'Enter user email',
+                        required: true,
+                    },
+                    {
+                        name: 'password',         // ✅ added — required by controller
+                        label: 'Password',
+                        type: 'password',
+                        placeholder: 'Min. 8 characters',
+                        required: true,
+                    },
+                    {
+                        name: 'role',
+                        label: 'Role',
+                        type: 'select',
+                        options: [
+                            { label: 'Admin', value: 'admin' },
+                            { label: 'User', value: 'user' },
+                        ],
+                        required: true,
+                    },
+                ]}
+                initialValues={{
+                    name: '',
+                    email: '',
+                    password: '',   // ✅ added
+                    role: '',
+                }}
+            />
         </AppLayout>
     );
 }
