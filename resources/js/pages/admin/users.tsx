@@ -124,12 +124,14 @@ export default function Users({ users }: UsersPageProps) {
                         ],
                         required: true,
                     },
+                    
                 ]}
                 initialValues={{
                     name: '',
                     email: '',
                     password: '',   // ✅ added
                     role: '',
+                    status: '',
                 }}
             />
         </AppLayout>
