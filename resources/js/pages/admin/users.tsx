@@ -120,7 +120,7 @@ export default function Users({ users }: UsersPageProps) {
                         type: 'select',
                         options: [
                             { label: 'Admin', value: 'admin' },
-                            { label: 'User', value: 'user' },
+                            { label: 'User', value: 'user' }
                         ],
                         required: true,
                     },
@@ -132,6 +132,7 @@ export default function Users({ users }: UsersPageProps) {
                     password: '',   // ✅ added
                     role: '',
                     status: '',
+
                 }}
             />
         </AppLayout>

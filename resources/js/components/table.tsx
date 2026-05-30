@@ -32,8 +32,11 @@ function Table({ data, columns, rowKey = 'id' }: TableProps) {
                         {columns.map((column) => (
                             <td key={column.key} className="p-4 ">
                                 {column.render ? column.render(row[column.key], row) : row[column.key]}
+                                
                             </td>
                         ))}
+                        
+
                     </tr>
                 ))}
             </tbody>
