@@ -7,6 +7,7 @@ import { Head, usePage } from '@inertiajs/react';
 import { Plus, CheckCircle, XCircle } from 'lucide-react';
 import { User } from '@/types/users';
 import ReusableFormModal from '@/components/modals/reusable-form-modal';
+import { router } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Users', href: '/users' },
@@ -80,7 +81,20 @@ export default function Users({ users }: UsersPageProps) {
                     </div>
 
                     {/* TABLE */}
-                    <Table data={users} columns={columns} rowKey="id" />
+                    <Table
+                        data={users}
+                        columns={columns}
+                        rowKey="id"
+                        onEdit={(user) => {
+                            console.log('Edit user:', user);
+                            // Open edit modal here
+                        }}
+                        onDelete={(user) => {
+                            if (confirm(`Delete ${user.name}?`)) {
+                                router.delete(`/users/${user.id}`);
+                            }
+                        }}
+                    />
                 </div>
             </div>
 
@@ -123,6 +137,7 @@ export default function Users({ users }: UsersPageProps) {
                             { label: 'User', value: 'user' }
                         ],
                         required: true,
+                        
                     },
                     
                 ]}
